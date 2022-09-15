@@ -19,7 +19,7 @@ jobs:
         then
           VERSION_FROM_EVENT=$(echo ${{ github.event.release.tag_name }} | sed -e 's/^v//')
           VERSION=$(echo "${{ github.ref }}" | sed -e 's#^refs/tags/v##')
-          echo IMAGE_ID=$IMAGE_ID
+          echo VERSION_FROM_EVENT=$VERSION_FROM_EVENT
           echo VERSION=$VERSION
           echo "versioning success"  
           echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
