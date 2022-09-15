@@ -1,0 +1,25 @@
+name: realese versions tests
+on:
+  release:
+    types: [created]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Code Checkout
+      uses: actions/checkout@v2
+
+    - name: Set VERSION variable from commit tag
+      run:  |
+        GITHUB_REFS=${{ github.ref }}
+        echo "Versioning of package id from new tags"
+        if [[ "$GITHUB_REFS" == *"tags"* ]];  
+        then
+          echo "versioning success"  
+          echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+          exit 0
+        else
+          echo "Versioning failed"
+          echo "Expected versioning with Vx.x.x"
+          exit 1
+        fi
