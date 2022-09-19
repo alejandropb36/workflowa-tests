@@ -15,8 +15,8 @@ jobs:
       run:  |
         GITHUB_REFS=${{ github.ref }}
         echo "Versioning of package id from new tags"
-        $VERSION_FROM_EVENT=$(echo ${{ github.event.release.tag_name }} | sed -e 's/^v//')
-        $VERSION=$(echo "${{ github.ref }}" | sed -e 's#^refs/tags/v##')
+        VERSION_FROM_EVENT=$(echo ${{ github.event.release.tag_name }} | sed -e 's/^v//')
+        VERSION=$(echo "${{ github.ref }}" | sed -e 's#^refs/tags/v##')
         echo "VERSION_FROM_EVENT=${VERSION_FROM_EVENT}" >> $GITHUB_ENV
         echo "VERSION=${VERSION}" >> $GITHUB_ENV
 
