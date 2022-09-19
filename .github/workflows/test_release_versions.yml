@@ -6,6 +6,9 @@ on:
     - 'v*'
 jobs:
   build:
+    env:
+      VERSION_FROM_EVENT: 'test1'
+      VERSION: 'test1'
     runs-on: ubuntu-latest
     steps:
     - name: Code Checkout
@@ -17,8 +20,10 @@ jobs:
         echo "Versioning of package id from new tags"
         if [[ "$GITHUB_REFS" == *"tags"* ]]; 
         then
-          VERSION_FROM_EVENT=$(echo ${{ github.event.release.tag_name }} | sed -e 's/^v//')
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's#^refs/tags/v##')
+          echo VERSION_FROM_EVENT=$VERSION_FROM_EVENT
+          echo VERSION=$VERSION
+          $VERSION_FROM_EVENT=$(echo ${{ github.event.release.tag_name }} | sed -e 's/^v//')
+          $VERSION=$(echo "${{ github.ref }}" | sed -e 's#^refs/tags/v##')
           echo VERSION_FROM_EVENT=$VERSION_FROM_EVENT
           echo VERSION=$VERSION
           echo "versioning success"  
