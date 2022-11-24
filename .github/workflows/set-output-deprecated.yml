@@ -23,7 +23,9 @@ jobs:
         run: |
           VERSION=${MAJOR}.${MINOR}.${{ github.run_number }}_${{ github.event.inputs.environment }}
           echo "$VERSION"
-          echo "::set-output name=VERSION::$VERSION"
+          # echo "::set-output name=VERSION::$VERSION"
+          # This is the new form => github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
 
   test:
     name: Test set output
