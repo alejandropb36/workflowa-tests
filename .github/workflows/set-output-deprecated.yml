@@ -1,0 +1,30 @@
+name: set-uotput deprecated
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: Which environment to deploy to.
+        required: true
+        options:
+          - Staging
+          - Production
+jobs:
+  pre_build:
+    name : Pre build
+    runs-on: ubuntu-latest
+    env:
+      MAJOR: 1
+      MINOR: 0
+    outputs:
+      version: ${{ steps.create_version.outputs.VERSION }}
+    steps:
+      - id: create_version
+        run: |
+          VERSION=${MAJOR}.${MINOR}.${{ github.run_number }}_${{ github.event.inputs.environment }}
+          echo "$VERSION"
+          echo "::set-output name=VERSION::$VERSION"
+
+    - name: Test
+      run: |
+       echo ${{ env.VERSION }}
