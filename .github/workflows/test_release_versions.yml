@@ -7,7 +7,7 @@ on:
 
 env:
   BASEPATH: ${PWD}
-  ARTIFACTS: ${BASEPATH}/artifacts
+  ARTIFACTS: ${PWD}/artifacts
 
 jobs:
   build:
