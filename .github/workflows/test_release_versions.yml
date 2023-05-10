@@ -27,5 +27,6 @@ jobs:
        echo "github.event.release.tag_nam: ${{ github.event.release.tag_nam }}"
        echo "env.VERSION: ${{ env.VERSION }}"
        echo "env.VERSION_FROM_EVENT: ${{ env.VERSION_FROM_EVENT }}"
+       echo "PWD: ${PWD}"
        echo ${{ env.VERSION }}
        echo ${{ env.VERSION_FROM_EVENT }}
