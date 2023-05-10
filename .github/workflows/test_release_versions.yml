@@ -22,10 +22,10 @@ jobs:
 
     - name: Test
       run: |
-       echo "github.ref: ${ github.ref }"
-       echo "github.ref_name: ${ github.ref_name }"
-       echo "github.event.release.tag_nam: ${ github.event.release.tag_nam }"
-       echo "env.VERSION: ${ env.VERSION }"
-       echo "env.VERSION_FROM_EVENT: ${ env.VERSION_FROM_EVENT }"
+       echo "github.ref: ${{ github.ref }}"
+       echo "github.ref_name: ${{ github.ref_name }}"
+       echo "github.event.release.tag_nam: ${{ github.event.release.tag_nam }}"
+       echo "env.VERSION: ${{ env.VERSION }}"
+       echo "env.VERSION_FROM_EVENT: ${{ env.VERSION_FROM_EVENT }}"
        echo ${{ env.VERSION }}
        echo ${{ env.VERSION_FROM_EVENT }}
