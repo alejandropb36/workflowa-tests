@@ -6,7 +6,8 @@ on:
     - 'v*'
 
 env:
-  ARTIFACTS: ${PWD}/artifacts
+  BASEPATH: ${PWD}
+  ARTIFACTS: $BASEPATH/artifacts
 
 jobs:
   build:
@@ -32,6 +33,7 @@ jobs:
        echo "env.VERSION: ${{ env.VERSION }}"
        echo "env.VERSION_FROM_EVENT: ${{ env.VERSION_FROM_EVENT }}"
        echo "PWD: ${PWD}"
+       echo "BASEPATH: $BASEPATH"
        echo "ARTIFACTS: ${{ env.ARTIFACTS }}"
        echo ${{ env.VERSION }}
        echo ${{ env.VERSION_FROM_EVENT }}
