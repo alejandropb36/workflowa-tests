@@ -4,6 +4,10 @@ on:
     types: [released]
     tags:
     - 'v*'
+
+env:
+  ARTIFACTS:"${PWD}/artifacts"
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,5 +32,6 @@ jobs:
        echo "env.VERSION: ${{ env.VERSION }}"
        echo "env.VERSION_FROM_EVENT: ${{ env.VERSION_FROM_EVENT }}"
        echo "PWD: ${PWD}"
+       echo "ARTIFACTS: ${{ env.ARTIFACTS }}"
        echo ${{ env.VERSION }}
        echo ${{ env.VERSION_FROM_EVENT }}
